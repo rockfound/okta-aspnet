@@ -35,6 +35,8 @@ namespace Okta.AspNet
             {
                 NameClaimType = "name",
                 ValidAudience = oktaMvcOptions.ClientId,
+                // CLIST: 2019-11-08 - save the claims token into the bootstrap context for k2
+                SaveSigninToken = true,
             };
 
             var tokenExchanger = new TokenExchanger(oktaMvcOptions, issuer, configurationManager);

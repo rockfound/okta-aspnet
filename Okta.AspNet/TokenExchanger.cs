@@ -43,7 +43,10 @@ namespace Okta.AspNet
 
             if (tokenResponse.IsError)
             {
-                throw new Exception(tokenResponse.Error);
+                // CLIST 2019-11-08 - add error description
+                // throw new Exception(tokenResponse.Error);
+                // throw new Exception(tokenResponse.Error);
+                throw new Exception(tokenResponse.Error + ": " + tokenResponse.ErrorDescription);
             }
 
             FillNameIdentifierClaimOnIdentity(response.AuthenticationTicket.Identity);

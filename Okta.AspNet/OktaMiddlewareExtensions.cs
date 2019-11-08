@@ -69,6 +69,8 @@ namespace Okta.AspNet
                     var signingKeys = signingKeyProvider.GetSigningKeysAsync().GetAwaiter().GetResult();
                     return signingKeys.Where(x => x.KeyId == keyId);
                 },
+                // CLIST: 2019-11-08 - save the claims token into the bootstrap context for k2
+                SaveSigninToken = true,
             };
 
             app.UseJwtBearerAuthentication(new JwtBearerAuthenticationOptions
